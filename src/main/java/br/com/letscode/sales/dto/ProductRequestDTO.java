@@ -6,13 +6,15 @@ import lombok.Setter;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class ProductRequestDTO {
 
     @NotNull(message = "The productCode field cannot be empty or null")
-    private Long productCode;
+    private UUID productCode;
 
     @NotEmpty(message = "The name field cannot be empty or null")
     private String name;
@@ -25,7 +27,7 @@ public class ProductRequestDTO {
 
     @NotNull(message = "The price field cannot be empty or null")
     @Min(value = 0, message = "Quantity cannot be negative")
-    private Double price;
+    private BigDecimal price;
 
     @NotNull(message = "The quantity field cannot be empty or null")
     @Min(value = 0, message = "Quantity cannot be negative")

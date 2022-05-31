@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -37,7 +38,7 @@ public class SalesController {
     }
 
     @GetMapping(path = "/find-sales-by-user-code/{userCode}")
-    private ResponseEntity<List<Sale>> getAllSalesByUserCode(@PathVariable("userCode") Long userCode) {
+    private ResponseEntity<List<Sale>> getAllSalesByUserCode(@PathVariable("userCode") UUID userCode) {
         return ResponseEntity.ok(saleService.getAllSalesByUserCode(userCode));
     }
 }

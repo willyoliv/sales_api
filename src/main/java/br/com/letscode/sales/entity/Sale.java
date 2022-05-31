@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -26,7 +27,7 @@ public class Sale {
     @JsonManagedReference
     private List<Product> products;
 
-    private Double saleValue;
+    private BigDecimal saleValue;
 
     public void setSaleToProduct() {
         if (!products.isEmpty()) {

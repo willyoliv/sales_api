@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,8 +16,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userCode;
-    private String userName;
+    private UUID userCode;
+    private String fullName;
     private String role;
 
     @OneToOne(mappedBy = "user")

@@ -5,10 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public interface SaleRepositoy extends JpaRepository<Sale, Long> {
-    List<Sale> findByUser_UserCode(Long userCode);
+    List<Sale> findByUser_UserCode(UUID userCode);
 }
 

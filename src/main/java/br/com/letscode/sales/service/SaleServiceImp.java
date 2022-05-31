@@ -1,26 +1,33 @@
 package br.com.letscode.sales.service;
 
+import br.com.letscode.sales.client.ProductClient;
 import br.com.letscode.sales.entity.Sale;
 import br.com.letscode.sales.exception.SaleNotFoundException;
 import br.com.letscode.sales.repository.SaleRepositoy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class SaleServiceImp implements SaleService {
 
     private final SaleRepositoy saleRepositoy;
+    private final ProductClient productClient;
 
     @Override
+    @Transactional
     public Sale saveSale(Sale sale) {
         sale.setSaleToProduct();
-        Double saleValue = sale.getProducts().stream()
-                .map((product) -> product.getPrice() * product.getQuantity())
-                .reduce(0.0, (a, b) -> a + b);
+        BigDecimal saleValue = sale.getProducts().stream()
+                .map((product) -> product.getPrice().multiply(new BigDecimal(product.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
         sale.setSaleValue(saleValue);
+//        productClient.updateStock(sale.getProducts());
         return saleRepositoy.save(sale);
     }
 
@@ -35,7 +42,7 @@ public class SaleServiceImp implements SaleService {
     }
 
     @Override
-    public List<Sale> getAllSalesByUserCode(Long userCode) {
+    public List<Sale> getAllSalesByUserCode(UUID userCode) {
         return saleRepositoy.findByUser_UserCode(userCode);
     }
 }

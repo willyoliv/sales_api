@@ -5,15 +5,16 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class UserResquestDTO {
     @NotNull(message = "The userCode field cannot be empty or null")
-    private Long userCode;
+    private UUID userCode;
 
     @NotEmpty(message = "The userName field cannot be empty or null")
-    private String userName;
+    private String fullName;
 
     @NotEmpty(message = "The role field cannot be empty or null")
     private String role;
