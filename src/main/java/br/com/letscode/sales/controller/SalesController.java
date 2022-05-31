@@ -37,7 +37,7 @@ public class SalesController {
         return ResponseEntity.ok(saleService.getSaleById(saleId));
     }
 
-    @GetMapping(path = "/find-sales-by-user-code/{userCode}")
+    @GetMapping(path = "/find-by-user-code/{userCode}")
     private ResponseEntity<List<Sale>> getAllSalesByUserCode(@PathVariable("userCode") UUID userCode) {
         return ResponseEntity.ok(saleService.getAllSalesByUserCode(userCode));
     }
