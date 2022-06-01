@@ -9,6 +9,6 @@ import java.util.List;
 @FeignClient(name = "products")
 public interface ProductClient {
 
-    @PutMapping(path = "/products/products/update-stock")
+    @PutMapping(path = "/products/update-stock")
     String updateStock(List<Product> products);
 }
