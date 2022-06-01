@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
-@FeignClient(url = "http://localhost:8081/api/products", name = "sales")
+@FeignClient(name = "products")
 public interface ProductClient {
 
-    @PutMapping(path = "/update-stock")
+    @PutMapping(path = "/products/products/update-stock")
     String updateStock(List<Product> products);
 }

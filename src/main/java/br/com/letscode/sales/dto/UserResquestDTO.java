@@ -18,4 +18,7 @@ public class UserResquestDTO {
 
     @NotEmpty(message = "The role field cannot be empty or null")
     private String role;
+
+    @NotNull(message = "The email field cannot be empty or null")
+    private String email;
 }

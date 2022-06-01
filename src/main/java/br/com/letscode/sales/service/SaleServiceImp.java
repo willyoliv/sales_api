@@ -27,7 +27,7 @@ public class SaleServiceImp implements SaleService {
                 .map((product) -> product.getPrice().multiply(new BigDecimal(product.getQuantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         sale.setSaleValue(saleValue);
-//        productClient.updateStock(sale.getProducts());
+        productClient.updateStock(sale.getProducts());
         return saleRepositoy.save(sale);
     }
 
