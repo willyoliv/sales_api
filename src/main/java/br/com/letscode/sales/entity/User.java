@@ -19,6 +19,7 @@ public class User {
     private UUID userCode;
     private String fullName;
     private String role;
+    private String email;
 
     @OneToOne(mappedBy = "user")
     @JsonBackReference
